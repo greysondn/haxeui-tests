@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<absolute id="0" left="0" top="0" width="800" height="600">
+    <label left="100" top="200" style="color:#FFFFFF;">
+The substate is now opened.
+You can close it with the close button below.
+    </label>
+
+    <button id="overlapped"    left="200" top="400">Overlapped</button>
+    <button id="close-substate" left="300" top="400">Close</button>
+</absolute>
