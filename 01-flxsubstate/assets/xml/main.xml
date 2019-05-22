@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<absolute id="0" left="0" top="0" width="800" height="600">
+    <label left="100" top="100">
+    Example (Main State)
+
+    This will tell you which button was pressed in flixel's log and in standard traces.
+    
+    (Tilde in debug builds)
+    </label>
+
+    <button id="open-substate" left="100" top="400">Open Substate</button>
+    <button id="overlapped"    left="100" top="400">Overlapped</button>
+</absolute>
