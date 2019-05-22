@@ -7,6 +7,7 @@ import flixel.ui.FlxButton;
 
 import example.ExampleState;
 import ideal.IdealState;
+import msghero.MsgheroState;
 
 // there is no haxeui code in this state
 
@@ -23,6 +24,10 @@ class MainState extends FlxState
         // button/desc for ideal code example
         this.add(new FlxText(150, 100, 0, "Example of idealized code and how it runs"));
         this.add(new FlxButton(50, 100, "Ideal", this.on_ideal));
+
+        // button/desc for MSGhero code example
+        this.add(new FlxText(150, 150, 0, "Example of MSGhero's suggested method, I think"));
+        this.add(new FlxButton(50, 150, "MSGhero", this.on_msghero));
     }
 
     override public function update(elapsed:Float):Void
@@ -38,5 +43,10 @@ class MainState extends FlxState
     public function on_ideal():Void
     {
         FlxG.switchState(new IdealState());
+    }
+
+    public function on_msghero():Void
+    {
+        FlxG.switchState(new MsgheroState());
     }
 }
