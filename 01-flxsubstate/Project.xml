@@ -87,10 +87,4 @@
 
     <!-- version is from git, commit 6cc3b3f4 -->
     <haxelib name="haxeui-flixel" />
-
-    <!-- these versions were at least somewhat current as of the complaint. -->
-
-    <!-- This is used to prevent premature initialization of haxeui, basically -->
-    <!-- also to give an example of expected behaviors -->
-    <haxelib name="flixel-ui" />
 </project>
