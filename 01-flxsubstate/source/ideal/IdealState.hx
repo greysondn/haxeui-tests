@@ -5,6 +5,7 @@ import flixel.FlxState;
 import flixel.group.FlxGroup;
 
 import haxe.ui.Toolkit;
+import haxe.ui.events.UIEvent;
 import haxe.ui.macros.ComponentMacros;
 import haxe.ui.components.Button;
 
@@ -24,10 +25,12 @@ class IdealState extends FlxState
         var _ui = ComponentMacros.buildComponent("assets/xml/main.xml");
         this.uiGroup.add(_ui);
 
-        // that's all it actually takes for a starter anyway
+        // wire up buttons, I wrote them as oneliners
+        _ui.findComponent("open-substate", Button).onClick = this.on_substate;
+        _ui.findComponent("overlapped"   , Button).onClick = this.on_overlapped;
     }
 
-    public function on_substate():Void
+    public function on_substate(e:UIEvent):Void
     {
         // log
         FlxG.log.add("Button: Open Substate!");
@@ -37,7 +40,7 @@ class IdealState extends FlxState
         // this.openSubState(new ExampleSubstate(0x88888888));
     }
 
-    public function on_overlapped():Void
+    public function on_overlapped(e:UIEvent):Void
     {
         // just log
         FlxG.log.add("Button: Overlapped (State)!");
