@@ -9,6 +9,8 @@ import haxe.ui.events.UIEvent;
 import haxe.ui.macros.ComponentMacros;
 import haxe.ui.components.Button;
 
+import ideal.IdealSubstate;
+
 class IdealState extends FlxState
 {
     public var uiGroup:FlxGroup = new FlxGroup();
@@ -37,7 +39,7 @@ class IdealState extends FlxState
         trace("Button: Open Substate!");
 
         // open
-        // this.openSubState(new ExampleSubstate(0x88888888));
+        this.openSubState(new IdealSubstate(0x88888888));
     }
 
     public function on_overlapped(e:UIEvent):Void
