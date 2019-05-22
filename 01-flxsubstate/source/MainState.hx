@@ -5,6 +5,8 @@ import flixel.text.FlxText;
 import flixel.FlxG;
 import flixel.ui.FlxButton;
 
+import example.ExampleState;
+
 // there is no haxeui code in this state
 
 class MainState extends FlxState
@@ -25,6 +27,6 @@ class MainState extends FlxState
 
     public function on_example():Void
     {
-        FlxG.log.add("Pressed!");
+        FlxG.switchState(new ExampleState());
     }
 }
