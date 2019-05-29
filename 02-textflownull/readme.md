@@ -19,4 +19,4 @@ haxelib versions from git...
 Postscript
 ==========
 
-not generated enough yet for it.
+For some odd reason, this doesn't break. I'm working on tracking down what the actual cause is.
