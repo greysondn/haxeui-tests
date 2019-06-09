@@ -14,13 +14,8 @@ import haxe.ui.events.UIEvent;
 
 import openfl.utils.Assets;
 
-import yaml.Yaml;
-import yaml.util.ObjectMap;
-
 class FAQSubstate extends FlxHaxeUiSubstate
 {
-    public static var outStr:String = "";
-
     override public function create():Void
     {
         // parent
@@ -46,49 +41,20 @@ class FAQSubstate extends FlxHaxeUiSubstate
         var but:Button = _ui.findComponent("close", Button);
         but.onClick = this.onClick_back;
 
-
         // load text from YAML
         this.loadText(cout);
     }
 
     private function loadText(cout:Label):Void
     {
-        if ("" == outStr)
-        {
-            // eventually
-            var outTxt:String = "";
+        // I've modified this, hoping that lorem ipsum text is plenty enough
+        // doing so eliminated the entire YAML library from inclusion.
 
-            // easier this way for me
-            var divider:String = "-----------------------------------------------";
-
-            // load source
-            var txtSrc:String = Assets.getText("assets/data/en-us/faq.yaml");
-            var txtDat:Array<ObjectMap<String, Dynamic>> = Yaml.parse(txtSrc);
-
-            // we iterate over it
-            for (entry in txtDat)
-            {
-                // real entries have an id greater than zero
-                if (entry.get("id") >= 0)
-                {
-                    // only a divider if it's not the first
-                    if (entry.get("id") != 0)
-                    {
-                        outTxt = outTxt + divider + "\n\n";
-                    }
-                    
-                    // question and answer
-                    outTxt = outTxt + "Q: " + entry.get("q") + "\n\n";
-                    outTxt = outTxt + "A: " + entry.get("a") + "\n\n";
-                }
-            }
-
-            // stash to use later
-            outStr = outTxt;
-        }
+        // load source
+        var outTxt:String = Assets.getText("assets/lorem.txt");
 
         // set it, finally
-        cout.text = outStr;
+        cout.text = outTxt;
     }
 
     private function onClick_back(ignored:UIEvent):Void
