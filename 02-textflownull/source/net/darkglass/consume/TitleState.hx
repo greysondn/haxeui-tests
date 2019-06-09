@@ -1,7 +1,5 @@
 package net.darkglass.consume;
 
-import flixel.FlxG;
-
 import net.darkglass.consume.substate.FAQSubstate;
 
 // new version pieces
