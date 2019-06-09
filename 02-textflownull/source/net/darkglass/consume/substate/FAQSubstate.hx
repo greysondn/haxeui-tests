@@ -41,20 +41,8 @@ class FAQSubstate extends FlxHaxeUiSubstate
         var but:Button = _ui.findComponent("close", Button);
         but.onClick = this.onClick_back;
 
-        // load text from YAML
-        this.loadText(cout);
-    }
-
-    private function loadText(cout:Label):Void
-    {
-        // I've modified this, hoping that lorem ipsum text is plenty enough
-        // doing so eliminated the entire YAML library from inclusion.
-
-        // load source
-        var outTxt:String = Assets.getText("assets/lorem.txt");
-
-        // set it, finally
-        cout.text = outTxt;
+        // ATTN: the next line is apparently critical to trigger the bug
+        cout.text = Assets.getText("assets/lorem.txt");
     }
 
     private function onClick_back(ignored:UIEvent):Void
