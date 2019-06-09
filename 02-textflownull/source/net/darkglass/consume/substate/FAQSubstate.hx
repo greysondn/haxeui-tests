@@ -32,7 +32,7 @@ class FAQSubstate extends FlxHaxeUiSubstate
         Toolkit.screen.options = { container : uiGroup };
         this.add(uiGroup);
         
-        var _ui = ComponentMacros.buildComponent("assets/ui/substate/faq.xml");
+        var _ui = ComponentMacros.buildComponent("assets/ui/faq.xml");
         uiGroup.add(_ui);
 
         var cout:Label = _ui.findComponent("cout", Label);
