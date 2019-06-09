@@ -1,7 +1,9 @@
-package net.darkglass.consume.substate;
+package ;
 
 import flixel.group.FlxGroup;
 import flixel.FlxSprite;
+import flixel.FlxSubState;
+import flixel.util.FlxColor;
 
 import haxe.ui.Toolkit;
 import haxe.ui.macros.ComponentMacros;
@@ -11,11 +13,9 @@ import haxe.ui.components.Button;
 import haxe.ui.events.UIEvent;
 
 import openfl.utils.Assets;
+import Registry;
 
-import yaml.Yaml;
-import yaml.util.ObjectMap;
-
-class FAQSubstate extends FlxSubstate
+class ExSubstate extends FlxSubState
 {
     public static var outStr:String = "";
 
@@ -42,7 +42,7 @@ class FAQSubstate extends FlxSubstate
         // ... stuff from a parent class...
 
         // make sure haxeui-flixel has been initialized
-        var reg:FlxHaxeUiRegistry = FlxHaxeUiRegistry.create();
+        var reg:Registry = Registry.create();
 
         if (!reg.initialized)
         {
@@ -59,14 +59,14 @@ class FAQSubstate extends FlxSubstate
         var uiGroup = new FlxGroup();
 
         // fake bg
-        var bg_faked:FlxSprite = new FlxSprite(23, 23, "assets/images/gui/classic/bg/faq_faked.png");
-        this.add(bg_faked);
+        // var bg_faked:FlxSprite = new FlxSprite(23, 23, "assets/images/gui/classic/bg/faq_faked.png");
+        // this.add(bg_faked);
 
         // ui toolkit
         Toolkit.screen.options = { container : uiGroup };
         this.add(uiGroup);
         
-        var _ui = ComponentMacros.buildComponent("assets/ui/substate/faq.xml");
+        var _ui = ComponentMacros.buildComponent("assets/substate.xml");
         uiGroup.add(_ui);
 
         var cout:Label = _ui.findComponent("cout", Label);
@@ -82,42 +82,8 @@ class FAQSubstate extends FlxSubstate
 
     private function loadText(cout:Label):Void
     {
-        if ("" == outStr)
-        {
-            // eventually
-            var outTxt:String = "";
-
-            // easier this way for me
-            var divider:String = "-----------------------------------------------";
-
-            // load source
-            var txtSrc:String = Assets.getText("assets/data/en-us/faq.yaml");
-            var txtDat:Array<ObjectMap<String, Dynamic>> = Yaml.parse(txtSrc);
-
-            // we iterate over it
-            for (entry in txtDat)
-            {
-                // real entries have an id greater than zero
-                if (entry.get("id") >= 0)
-                {
-                    // only a divider if it's not the first
-                    if (entry.get("id") != 0)
-                    {
-                        outTxt = outTxt + divider + "\n\n";
-                    }
-                    
-                    // question and answer
-                    outTxt = outTxt + "Q: " + entry.get("q") + "\n\n";
-                    outTxt = outTxt + "A: " + entry.get("a") + "\n\n";
-                }
-            }
-
-            // stash to use later
-            outStr = outTxt;
-        }
-
-        // set it, finally
-        cout.text = outStr;
+        // long function in the original "but" let's just keep moving.
+        cout.text = Assets.getText("assets/lorem.txt");
     }
 
     private function onClick_back(ignored:UIEvent):Void

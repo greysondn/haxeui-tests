@@ -5,7 +5,7 @@ package;
  * 
  * Not pretty, but gets the job done
  */
-class FlxHaxeUiRegistry
+class Registry
 {
     /**
      * whether or not haxeui-flixel has been initialized
@@ -15,21 +15,21 @@ class FlxHaxeUiRegistry
     /**
      * Instance of this class. The only.
      */
-    private static var instance:FlxHaxeUiRegistry;
+    private static var instance:Registry;
 
     private function new()
     {
         // does nothing, non?
     }
 
-    public static function create():FlxHaxeUiRegistry
+    public static function create():Registry
     {
         // make sure instance exists
-        if (null == FlxHaxeUiRegistry.instance)
+        if (null == Registry.instance)
         {
-            FlxHaxeUiRegistry.instance = new FlxHaxeUiRegistry();
+            Registry.instance = new Registry();
         }
 
-        return FlxHaxeUiRegistry.instance;
+        return Registry.instance;
     }
 }

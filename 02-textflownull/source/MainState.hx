@@ -1,24 +1,10 @@
 package;
 
 import openfl.Assets;
-import flixel.addons.ui.FlxUIState;
-
-import flixel.addons.ui.FlxUISprite;
-import flixel.addons.ui.FlxUIText;
-import flixel.addons.ui.FlxUIButton;
 import flixel.FlxG;
 import flixel.math.FlxRandom;
 import flixel.text.FlxText.FlxTextFormat;
-
-import net.darkglass.consume.PlayState;
-import net.darkglass.consume.Registry;
-
-import net.darkglass.consume.substate.CreditsSubstate;
-import net.darkglass.consume.substate.FAQSubstate;
-import net.darkglass.consume.substate.OptionSubstate;
-import net.darkglass.consume.substate.PreWarnSubstate;
-
-import yaml.Yaml;
+import flixel.FlxState;
 
 // new version pieces
 import flixel.group.FlxGroup;
@@ -30,7 +16,7 @@ import haxe.ui.events.UIEvent;
 
 import Registry;
 
-class TitleState extends FlxState
+class MainState extends FlxState
 {
     public var uiGroup:FlxGroup;
 
@@ -42,7 +28,7 @@ class TitleState extends FlxState
         // ... I've included the code from a parent class here...
 
         // make sure haxeui-flixel has been initialized
-        var reg:FlxHaxeUiRegistry = FlxHaxeUiRegistry.create();
+        var reg:Registry = Registry.create();
 
         if (!reg.initialized)
         {
@@ -64,7 +50,7 @@ class TitleState extends FlxState
         // init ui loader
         Toolkit.screen.options = { container : this.uiGroup };
         this.add(this.uiGroup);
-        var _ui = ComponentMacros.buildComponent("assets/ui/titlestate.xml");
+        var _ui = ComponentMacros.buildComponent("assets/main.xml");
         uiGroup.add(_ui);
 
         // wire up the buttons
@@ -74,7 +60,7 @@ class TitleState extends FlxState
 
     public function onClick_faq(ignored:UIEvent):Void
     {
-        var faqSubstate:FAQSubstate = new FAQSubstate(0x80000000, this.uiGroup);
-        openSubState(faqSubstate);
+        var exSubstate:ExSubstate = new ExSubstate(0x80000000, this.uiGroup);
+        openSubState(exSubstate);
     }
 }
