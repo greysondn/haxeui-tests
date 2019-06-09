@@ -25,7 +25,7 @@ class FAQSubstate extends FlxHaxeUiSubstate
         var uiGroup = new FlxGroup();
 
         // fake bg
-        var bg_faked:FlxSprite = new FlxSprite(23, 23, "assets/images/gui/classic/bg/faq_faked.png");
+        var bg_faked:FlxSprite = new FlxSprite(23, 23, "assets/images/faq_faked.png");
         this.add(bg_faked);
 
         // ui toolkit

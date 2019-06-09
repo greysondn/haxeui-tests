@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!-- entire thing -->
 <absolute id="stagebg" left="0" top="0" width="850" height="640">
-    <style source="css/classic/titlestate.css" />
+    <style source="titlestate.css" />
     <!-- Title -->
     <!-- TODO -->
 

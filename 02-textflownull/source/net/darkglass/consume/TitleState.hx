@@ -23,7 +23,7 @@ class TitleState extends FlxHaxeUiState
         // set ui stuffs
         this.uiGroup = new FlxGroup();
 
-        var bg:FlxSprite = new FlxSprite(0, 0, "assets/images/gui/classic/bg/title_faked.png");
+        var bg:FlxSprite = new FlxSprite(0, 0, "assets/images/title_faked.png");
         this.add(bg);
 
         // init ui loader
