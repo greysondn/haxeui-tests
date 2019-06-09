@@ -21,7 +21,6 @@ import net.darkglass.consume.substate.PreWarnSubstate;
 import yaml.Yaml;
 
 // new version pieces
-import net.darkglass.util.flixel.FlxHaxeUiState;
 import flixel.group.FlxGroup;
 import flixel.FlxSprite;
 import haxe.ui.Toolkit;
@@ -29,7 +28,9 @@ import haxe.ui.macros.ComponentMacros;
 import haxe.ui.components.Button;
 import haxe.ui.events.UIEvent;
 
-class TitleState extends FlxHaxeUiState
+import Registry;
+
+class TitleState extends FlxState
 {
     public var uiGroup:FlxGroup;
 
@@ -37,6 +38,22 @@ class TitleState extends FlxHaxeUiState
     {
         // parent
         super.create();
+
+        // ... I've included the code from a parent class here...
+
+        // make sure haxeui-flixel has been initialized
+        var reg:FlxHaxeUiRegistry = FlxHaxeUiRegistry.create();
+
+        if (!reg.initialized)
+        {
+            Toolkit.init({ container : this });
+            reg.initialized = true;
+        }
+
+        // reimplement default behavior, which is to make this haxeui container
+        Toolkit.screen.options = { container : this };
+
+        // ... and that's the end of the parent's code...
 
         // set ui stuffs
         this.uiGroup = new FlxGroup();
