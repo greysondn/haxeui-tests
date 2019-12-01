@@ -2,8 +2,7 @@ package net.darkglass.consume.substate;
 
 import flixel.group.FlxGroup;
 import flixel.FlxSprite;
-
-import net.darkglass.util.flixel.FlxHaxeUiSubstate;
+import flixel.FlxSubState;
 
 import haxe.ui.Toolkit;
 import haxe.ui.macros.ComponentMacros;
@@ -14,27 +13,21 @@ import haxe.ui.events.UIEvent;
 
 import openfl.utils.Assets;
 
-class FAQSubstate extends FlxHaxeUiSubstate
+class FAQSubstate extends FlxSubState
 {
     override public function create():Void
     {
         // parent
         super.create();
 
-        // instance vars
-        var uiGroup = new FlxGroup();
+        // ui infrastructure
+        var _ui = ComponentMacros.buildComponent("assets/ui/faq.xml");
+        this.add(_ui);
 
         // fake bg
         var bg_faked:FlxSprite = new FlxSprite(23, 23, "assets/images/faq_faked.png");
-        this.add(bg_faked);
 
-        // ui toolkit
-        Toolkit.screen.options = { container : uiGroup };
-        this.add(uiGroup);
-        
-        var _ui = ComponentMacros.buildComponent("assets/ui/faq.xml");
-        uiGroup.add(_ui);
-
+        // ui bits and bobs
         var cout:Label = _ui.findComponent("cout", Label);
         cout.width = 686;
 
