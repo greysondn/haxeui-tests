@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <absolute id="stagebg" left="0" top="0" width="850" height="640">
-    <label id="counter" left="500" top="100" style="font-size:50;">0100</label>
-    <button id="substate" left="200"  top="512" width="200" height="42" style="font-size: 16;">Open Substate</button>
-    <button id="add" left="500"  top="512" width="200" height="42" style="font-size: 16;">Add 1 to Counter</button>
+    <label id="counter" left="500" top="100" style="font-size:50;" text="0100" />
+    <button id="substate" left="200"  top="512" width="200" height="42" style="font-size: 16;" text="Open Substate" />
+    <button id="add" left="500"  top="512" width="200" height="42" style="font-size: 16;" text="Add 1 to Counter" />
 </absolute>
