@@ -13,7 +13,7 @@ class TitleState extends FlxState
 {
     public var count:Int = 0;
     public var counter:Label;
-
+    public var uiGroup:FlxGroup = new FlxGroup();
 
     override public function create():Void
     {
@@ -25,9 +25,8 @@ class TitleState extends FlxState
         this.add(bg);
 
         // init and load ui
-        var uiGroup:FlxGroup = new FlxGroup();
-        Toolkit.init({ container : uiGroup });
-        this.add(uiGroup);
+        Toolkit.init({ container : this.uiGroup });
+        this.add(this.uiGroup);
         var _ui = ComponentMacros.buildComponent("assets/ui/titlestate.xml");
         uiGroup.add(_ui);
 
@@ -37,7 +36,14 @@ class TitleState extends FlxState
 
         // wire up the buttons
         _ui.findComponent("add", Button).onClick = this.onAdd;
+
+        // which version you want? pick only one...
+        
+        // expected
         _ui.findComponent("substate", Button).onClick = this.onSub;
+        
+        // workaround
+        // _ui.findComponent("substate", Button).onClick = this.onSubAlt;
     }
 
     public function onAdd(ignored:UIEvent):Void
@@ -49,5 +55,20 @@ class TitleState extends FlxState
     public function onSub(ignored:UIEvent):Void
     {
         this.openSubState(new ASubState(0x20000000));
+    }
+
+    public function onSubAlt(ignored:UIEvent):Void
+    {
+        // this works by using haxeui's surface properties
+        // and msghero's method of swapping in and out substates
+        var _sub:ASubState = new ASubState(0x20000000);
+        Toolkit.screen.options = {container : _sub};
+        _sub.closeCallback = this.onSubAlt_close;
+        this.openSubState(_sub);
+    }
+
+    public function onSubAlt_close():Void
+    {
+        Toolkit.screen.options = {container: this.uiGroup};
     }
 }
