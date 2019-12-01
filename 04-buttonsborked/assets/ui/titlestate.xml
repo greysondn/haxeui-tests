@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<absolute id="stagebg" left="0" top="0" width="850" height="640">
+    <label  id="explanation" left="32" top="32" width="786" height="200" style="font-size: 24; color: white;" text="Buttons Borked
+Noticed that my buttons are lacking right hand edges and lose all edgework entirely on hover, plus go wonky on click. So anyway, here's this to give a testcase for that. Buttons from elsewhere." />
+
+    <button left="32"  top="256" width="200" height="42" style="font-size: 16;" text="Open Substate" />
+    <button left="32"  top="320" width="200" height="42" style="font-size: 16;" text="Add 1 to Counter" />
+    <button left="32"  top="384" text="Open Substate" />
+    <button left="32"  top="448" text="Overlapped" />
+</absolute>
