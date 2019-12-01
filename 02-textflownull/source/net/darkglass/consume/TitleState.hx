@@ -22,6 +22,11 @@ class TitleState extends FlxState
         // parent
         super.create();
 
+        /* msghero suggested workaround
+           it does work, just kinda bad karma to leave memory laying about like
+           that, and he said it doesn't address the underlying problem */
+        // this.destroySubStates = false;
+
         var bg:FlxSprite = new FlxSprite(0, 0, "assets/images/title_faked.png");
         this.add(bg);
 
